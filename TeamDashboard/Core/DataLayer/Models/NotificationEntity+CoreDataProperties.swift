@@ -16,8 +16,8 @@ extension NotificationEntity {
         return NSFetchRequest<NotificationEntity>(entityName: "NotificationEntity")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var message: String?
+    @NSManaged public var id: UUID
+    @NSManaged public var message: String
     @NSManaged public var isRead: Bool
 
 }
