@@ -30,6 +30,10 @@ struct PersonName: Equatable {
     }
 }
 
+extension PersonName {
+    static let mockName = PersonName(value: "Peter Parker")!
+}
+
 enum EmployeeRole: String, CaseIterable {
     case developer
     case designer
