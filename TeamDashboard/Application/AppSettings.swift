@@ -8,6 +8,6 @@
 import Foundation
 
 struct AppInfo {
-    static let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "Urban Guide"
+    static let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "TeamDashboard"
     static let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
 }

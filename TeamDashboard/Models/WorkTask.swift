@@ -1,0 +1,14 @@
+//
+//  WorkTask.swift
+//  TeamDashboard
+//
+//  Created by Dima Zhiltsov on 25.02.2025.
+//
+
+import Foundation
+
+struct WorkTask: Identifiable, Equatable {
+    let id: UUID
+    let title: String
+    let deadline: Date
+}
