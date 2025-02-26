@@ -12,8 +12,11 @@ enum PersistenceError: Error {
     case invalidEntity
     case fetchFailed
     case saveFailed
+    case updateFailed
+    case deleteFailed
     case contextNotFound
     case decoding
+    case entityNotFound
     
     var message: String {
         switch self {
@@ -25,10 +28,16 @@ enum PersistenceError: Error {
             return "Failed to fetch data"
         case .saveFailed:
             return "Failed to save data"
+        case .updateFailed:
+            return "Failed to update data"
+        case .deleteFailed:
+            return "Failed to delete data"
         case .contextNotFound:
             return "Context not found"
         case .decoding:
             return "Failed to decode entity"
+        case .entityNotFound:
+            return "Entity not found"
         }
     }
 }
