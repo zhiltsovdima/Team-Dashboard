@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol TeamService {
+protocol RemoteTeamService {
     func fetchDashboardData() async throws -> DashboardData
     func fetchNotifications() async throws -> [WorkNotification]
     func fetchEmployeeProfile() async throws -> Employee
 }
 
-final class TeamServiceMock: TeamService {
+final class TeamServiceMock: RemoteTeamService {
     func fetchDashboardData() async throws -> DashboardData {
         try await Task.sleep(for: .seconds(1))
         
