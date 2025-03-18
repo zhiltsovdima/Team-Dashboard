@@ -26,7 +26,14 @@ struct AppFeature {
         Reduce { state, action in
             switch action {
             case .intro(.showMain):
-                state = .main(MainFeature.State())
+                state = .main(
+                    MainFeature.State(
+                        tabBar: TabBarFeature.State(
+                            tabs: TabBarItem.allCases,
+                            selectedTab: .dashboard
+                        )
+                    )
+                )
                 return .none
             case .intro, .main:
                 return .none
