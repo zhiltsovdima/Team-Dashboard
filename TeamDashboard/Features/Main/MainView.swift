@@ -9,28 +9,27 @@ import ComposableArchitecture
 import SwiftUI
 
 struct MainView: View {
-    @Perception.Bindable var store: StoreOf<MainFeature>
+    let store: StoreOf<MainFeature>
     
     var body: some View {
-        WithPerceptionTracking {
-            ZStack(alignment: .bottom) {
-                Group {
-                    switch store.tabBar.selectedTab {
-                    case .dashboard:
-                        Color.red
-                    case .notifications:
-                        Color.green
-                    case .profile:
-                        Color.blue
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .safeAreaInset(edge: .bottom) {
-                    TabBarView(store: store.scope(state: \.tabBar, action: \.tabBar), style: .default)
+        ZStack(alignment: .bottom) {
+            Group {
+                switch store.tabBar.selectedTab {
+                case .dashboard:
+                    Color.red
+                case .notifications:
+                    Color.green
+                case .profile:
+                    Color.blue
                 }
             }
-            .ignoresSafeArea(.keyboard)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .safeAreaInset(edge: .bottom) {
+                TabBarView(store: store.scope(state: \.tabBar, action: \.tabBar), style: .default)
+            }
         }
+        .ignoresSafeArea(.keyboard)
+        .withPerceptionTracking()
     }
 }
 

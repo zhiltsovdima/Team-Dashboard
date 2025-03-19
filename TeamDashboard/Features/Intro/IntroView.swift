@@ -12,16 +12,15 @@ struct IntroView: View {
     let store: StoreOf<IntroFeature>
     
     var body: some View {
-        WithPerceptionTracking {
-            VStack {
-                if store.isLoading {
-                    ProgressView()
-                }
-            }
-            .onAppear {
-                store.send(.onAppear)
+        VStack {
+            if store.isLoading {
+                ProgressView()
             }
         }
+        .onAppear {
+            store.send(.onAppear)
+        }
+        .withPerceptionTracking()
     }
 }
 
