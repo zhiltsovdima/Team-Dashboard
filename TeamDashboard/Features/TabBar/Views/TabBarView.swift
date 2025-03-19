@@ -13,28 +13,30 @@ struct TabBarView: View {
     let style: TabBarStyle
     
     var body: some View {
-        HStack {
-            ForEach(store.tabs) { tabItem in
-                TabBarItemView(
-                    model: tabItem,
-                    style: .default,
-                    isSelected: store.selectedTab == tabItem
-                ) {
-                    store.send(.didSelect(tab: tabItem))
+        WithPerceptionTracking {
+            HStack {
+                ForEach(store.tabs) { tabItem in
+                    WithPerceptionTracking {
+                        TabBarItemView(
+                            model: tabItem,
+                            style: .default,
+                            isSelected: store.selectedTab == tabItem
+                        ) {
+                            store.send(.didSelect(tab: tabItem))
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
                 }
-                .frame(maxWidth: .infinity)
-                .withPerceptionTracking()
             }
+            .padding(.horizontal, 16)
+            .background(style.backgroundColor)
+            .clipShape(Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(style.borderColor,
+                            lineWidth: style.borderWidth))
+            .frame(height: 60)
         }
-        .padding(.horizontal, 16)
-        .background(style.backgroundColor)
-        .clipShape(Capsule())
-        .overlay(
-            Capsule()
-                .stroke(style.borderColor,
-                        lineWidth: style.borderWidth))
-        .frame(height: 60)
-        .withPerceptionTracking()
     }
 }
 
