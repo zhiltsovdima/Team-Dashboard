@@ -5,6 +5,7 @@
 //  Created by Dima Zhiltsov on 25.02.2025.
 //
 
+import Dependencies
 import Foundation
 
 protocol RemoteTeamService {
@@ -41,5 +42,17 @@ final class TeamServiceMock: RemoteTeamService {
             role: .developer,
             weeklyStats: 256
         )
+    }
+}
+
+
+private enum RemoteTeamServiceKey: DependencyKey {
+    static let liveValue: any RemoteTeamService = TeamServiceMock()
+}
+
+extension DependencyValues {
+    var remoteTeamService: any RemoteTeamService {
+        get { self[RemoteTeamServiceKey.self] }
+        set { self[RemoteTeamServiceKey.self] = newValue }
     }
 }

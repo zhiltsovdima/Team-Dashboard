@@ -17,7 +17,12 @@ struct MainView: View {
                 Group {
                     switch store.tabBar.selectedTab {
                     case .dashboard:
-                        Color.red
+                        DashboardView(
+                            store: store.scope(
+                                state: \.dashboard,
+                                action: \.dashboard
+                            )
+                        )
                     case .notifications:
                         Color.green
                     case .profile:
