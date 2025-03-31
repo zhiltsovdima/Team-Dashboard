@@ -45,6 +45,8 @@ final class TeamServiceMock: RemoteTeamService {
     }
 }
 
+/// В IntroDataService протестировали новый подход к созданию зависимостей
+/// В этом же случае попробуем создать зависимости при использовании классического протокольный подхода для сервиса
 
 private enum RemoteTeamServiceKey: DependencyKey {
     static let liveValue: any RemoteTeamService = TeamServiceMock()
