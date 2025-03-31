@@ -19,6 +19,7 @@ extension TaskEntity {
     @NSManaged public var id: UUID
     @NSManaged public var title: String
     @NSManaged public var deadline: Date
+    @NSManaged public var isCompleted: Bool
 
 }
 

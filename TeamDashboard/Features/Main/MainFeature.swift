@@ -14,7 +14,7 @@ struct MainFeature {
     @ObservableState
     struct State: Equatable {
         var tabBar: TabBarFeature.State
-        var dashboard = DashboardFeature.State()
+        var dashboard = DashboardFeature.State(status: .loading)
         var notifications = NotificationFeature.State()
         var profile = ProfileFeature.State()
     }
